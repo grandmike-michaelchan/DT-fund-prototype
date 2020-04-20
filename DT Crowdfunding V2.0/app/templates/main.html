@@ -1,0 +1,74 @@
+{% extends "base1.html" %}
+{% block title %}Fund Page{% endblock %}
+{% block body %}
+<style type="text/css">
+#section1 {padding-top:50px;height:500px;color: #fff; background-color: rgb(255, 226, 147);}
+a:link {
+	font-size: 18px;
+	color: rgb(255, 136, 0);
+	text-decoration: none;
+	font-weight: bolder;
+}
+a:visited {
+	font-size: 18px;
+	color: rgb(255, 153, 0);
+	text-decoration: none;
+	font-weight: bolder;
+}
+a:hover {
+	font-size: 18px;
+	color: rgb(255, 153, 0);
+	text-decoration: underline;
+	font-weight: bolder;
+}
+
+body
+{
+	background-image: linear-gradient(to right, #ffde98, #ffdf75);
+	margin-top: 150px !important;
+}
+</style>
+
+<!-- Home page of the website, show two option to choose -->
+<body>
+<div id="section1" class="row container-fluid">  
+<div class="row col-lg-3 col-md-6 mb-4">
+		<div class="card h-100">
+		<img class="card-img-top" src="http://dtgroups.ddns.net/dthrms/wp-content/uploads/2020/04/today-5-18-500x325.png" alt="">
+		<div class="card-body">
+			<h4 class="card-title" style="color: darkgoldenrod;">Fund subscription list</h4>
+			<p class="card-text" style="color: black;">You can select a fund to subscribe from the list. Fund will be transferred to your account once the maturity date is reached.</p>
+		</div>
+		<div class="card-footer">
+			<a href="/list" class="btn btn-primary">Click To Check List</a>
+		</div>
+		</div>
+	</div>
+	<div class="row col-lg-3 col-md-6 mb-4" style="position: sticky;">
+		<div class="card h-100">
+		<img class="card-img-top" src="http://dtgroups.ddns.net/dthrms/wp-content/uploads/2020/04/quiet-breaks-with-god-500x325.jpg" alt="">
+		<div class="card-body">
+			<h4 class="card-title" style="color: darkgoldenrod;">Subscription Cart</h4>
+			<p class="card-text" style="color: black;">Click to check the subscription cart status before payment.</p>
+		</div>
+		<div class="card-footer">
+			<a href="/cart" class="btn btn-primary">Go to Cart</a>
+		</div>
+		</div>
+	</div>
+	<div class="row col-lg-3 col-md-6 mb-4" style="position: sticky;">
+		<div class="card h-100">
+		<img class="card-img-top" src="http://dtgroups.ddns.net/dthrms/wp-content/uploads/2020/04/quiet-breaks-with-god-500x325.jpg" alt="">
+		<div class="card-body">
+			<h4 class="card-title" style="color: darkgoldenrod;">Close Trading</h4>
+			<p class="card-text" style="color: black;">Please logout immediately when idle, DT does not reposible for any account issue</p>
+		</div>
+		<div class="card-footer">
+			<a href="/logout" class="btn btn-primary">Logout</a>
+		</div>
+		</div>
+	</div>
+  </div>	
+  </body>	
+
+{% endblock %}

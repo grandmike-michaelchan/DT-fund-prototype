@@ -1,0 +1,198 @@
+{% extends "base2.html" %}
+{% block title %}User Registration{% endblock %}
+{% block body %}
+
+<style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        .boder {
+            border: 1px solid #5B96D0;
+        }
+
+        .col1 {
+            background-color: #A6D2FF;
+            text-align: right;
+            padding-right: 10px;
+            border: 1px solid #5B96D0;
+            line-height: 50px;
+        }
+
+        .col2 {
+            padding-left: 10px;
+            border: 1px solid #5B96D0;
+            line-height: 50px;
+        }
+
+        .textfield {
+            height: 20px;
+            width: 200px;
+            border: 1px solid #999999;
+            text-align: left;
+            font-size: medium;
+            line-height: 50px;
+        }
+
+        body
+        {
+            background-image: linear-gradient(to right, #28cfc7, #008ce3);
+            margin-top: 150px !important;
+        }
+
+        .register-left
+        {
+            text-align: center;
+            color: #fff;
+            padding: 30px;
+        }
+
+        .fas fa-edit
+        {
+            margin-top: 60px;
+            margin-bottom: 18px;
+            width: 80px;
+            animation: mover ls infinite alternate;
+        }
+
+        .register-left p
+        {
+            padding: 20px 20px 0;
+        }
+
+        .register-left .btn-primary
+        {
+            border-radius: 1.5rem;
+            border: none;
+            background: #f8f8f8;
+            font-weight: 600;
+            color: #555;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .register-left .btn-primary:hover
+        {
+            background: #000;
+        }
+
+        .register-right
+        {
+            border: none;
+            background: #f8f8f8;
+            border-top-left-radius: 10% 50%;
+            border-bottom-left-radius: 10% 50%;
+            padding: 50px;
+        }
+
+        .register-right h2
+        {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .register-form
+        {
+            padding: 30px;
+        }
+
+        .register-right .btn-primary
+        {
+            float: right;
+
+            border-radius: 1.5rem;
+            border: none;
+            width: 120px;
+            background: #ff9800;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .register-right .btn-primary:hover
+        {
+            background: #ff5722;
+        }
+
+        @keyframes mover
+        {
+            0%{transform: translateY(0);}
+            100%{transform: translateY(-20px);}
+        }
+</style>
+
+<br>
+<hr width="100%"/>
+<!-- Display login error message -->
+<ul>
+    {% for field, errors in form.errors.items() %}
+        {% for message in errors %}
+            <li class="error">{{ message }}</li>
+        {% endfor %}
+    {% endfor %}
+</ul>
+
+<body>
+    <table width="100%" border="0" align="center">
+        <tr>
+            <!-- td width="616"><img src="{{ url_for('static', filename='images/list.jpg') }}" align="absmiddle"/></td -->
+            {% include 'goods_header.html' %}
+        </tr>
+    </table>
+    
+<div class="text3" align="center">Fill in the following information: </div>
+<br>
+<form action="/reg" method="POST">
+    <!-- Prevent CSRF attack, keep CSRF Token-->
+    {{ form.hidden_tag() }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset=md-1">
+                <div class="row">
+                    <div class="col-md-5 register-left">
+                        <i class="fas fa-edit" style="font-size: larger;"></i>
+                        <h3>Join Us</h3>
+                        <p>Start your investment journey through fill in information</p> 
+                        <p>Please fill in field if * appears</p>
+                        <button type="button" class="btn btn-primary" onclick="location.href='http://dtgroups.ddns.net/dthrms/2019/10/27/legal-notice/'">Legal Notice</button>
+                    </div>
+                        <div class="col-md-7 register-right">
+                            <h2>Register Here</h2>
+                            <div class="register-form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="UserID*" {{ form.userid }}
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="UserName*" {{ form.name }}
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email*" {{ form.address }}
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password*" {{ form.password }}
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Re-Enter Password*" {{ form.password2 }}
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Date of Birth. Follow the format:（YYYY-MM-DD）*" {{ form.birthday }}
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Contact Number*" {{ form.phone }}
+                                </div>
+                                <!-- button input type="button" class="btn btn-primary">Register</button -->
+                                <div align="center">
+                                    <input type="image" src="{{ url_for('static', filename='images/submit_button.jpg') }}"/>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+{% endblock %}

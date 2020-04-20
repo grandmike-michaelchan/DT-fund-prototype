@@ -1,0 +1,149 @@
+{% extends "base1.html" %}
+{% block title %}User Login{% endblock %}
+{% block body %}
+
+<!-- Display login error info -->
+<ul>
+    {% for field, errors in form.errors.items() %}
+        {% for message in errors %}
+            <li class="error">{{ message }}</li>
+        {% endfor %}
+    {% endfor %}
+</ul>
+
+<style>
+.background{
+    background-image: url("http://dtgroups.ddns.net/dthrms/wp-content/uploads/2020/04/pngtree-financial-stock-market-background-illustration-on-technology-abstract-background-image_322157.jpg");
+    background-color: aquamarine;
+    background-position: left center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}	
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-size: cover;
+}
+
+.main-section{
+    margin: 0 auto;
+    margin-top: 130px;
+    padding: 0;
+}
+
+.modal-content {
+    background-color: cadetblue;
+    opacity: .95;
+    padding: 0 18px;
+    box-shadow: 0px 0px 3px #848484;
+}
+
+.user-img {
+    margin-top: -50px;
+    margin-bottom: 35px;
+}
+
+.user-img img {
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px #848484;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group input {
+    height: 42px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 18px;
+    padding-left: 54px;
+}
+
+.form-group::before {
+    font-family: 'Font Awesome\ 5 Free';
+    content: "\f007";
+    position: absolute;
+    font-size: 22px;
+    color: #555e60;
+    left: 20px;
+    padding-top: 4px;
+}
+
+.form-group:last-of-type::before{
+    content: "\f023";
+}
+
+button{
+    width: 40%;
+    margin: 5px 0 25px;
+}
+
+.btn{
+    background-color: #27c2a5;
+    color: #fff;
+    font-size: 19px;
+    padding: 7px 14px;
+    border-radius: 5px;
+    border-bottom: 4px solid #219882;
+}
+.btn:hover, .btn:focus {
+    background-color: #25a890!important;
+    border-bottom: 4px solid #25a890!important;
+}
+
+.svg-inline--fa{
+    font-size: 20px;
+    margin-right: 7px;
+}
+
+.forgot {
+    padding: 5px 0 25px;
+}
+
+.forgot a {
+    color: #c2fbec;
+}
+</style>
+
+<!-- Page Content -->
+<form action="/login" method="POST">
+    <!-- Prevent CSRF attack measure -->
+    {{ form.hidden_tag() }}
+
+    <!-- Login Module -->
+    <body class="background" data-spy="scroll" data-target=".navbar" data-offset="50">
+        <div class="modal-dialog text-center">
+            <div class="col-sm-8 main-section">
+                <div class="modal-content">
+                    <div class="col-12 user-img">
+                        <img src="{{ url_for('static', filename='images/face.png') }}">
+                    </div>
+
+                    <form class="col-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter ID" {{ form.userid }}
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Enter Password" {{ form.password }}
+                        </div>
+                        <button type="submit" class="btn" onclick="document.forms[0].fn.value='login'"><i class="fas fa-sign-in-alt"></i>Login</button>
+                        <a href="/reg"></a>
+                    </form>
+
+                    <div class="col-12 forgot">
+                        <a href="/home">Back to Home Page</a>
+                    </div>
+
+                </div> <!-- End of Modal Content-->
+            </div>
+        </div>
+    </body>
+    <!-- End Of Login Module -->
+</form>
+{% endblock %}
+

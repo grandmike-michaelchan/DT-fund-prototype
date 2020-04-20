@@ -1,0 +1,130 @@
+{% extends "base2.html" %}
+{% block title %}Fund detail{% endblock %}
+{% block body %}
+<style type="text/css">
+.title {
+	font-size: 20px;
+	color: rgb(255, 53, 27);
+	font-style: italic;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #ffe96a;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+body
+{
+    background-image: linear-gradient(to right, #f5f5ff, #b3b3b3);
+    margin-top: 150px !important;
+}
+</style>
+
+<!-- Fund detail page, show fund description and details and terms -->
+<body>
+<table width="100%" border="0" align="center">
+    <tr>
+        {% include 'goods_header.html' %}
+    </tr>
+</table>
+<hr width="100%"/>
+<div class="text3" align="center">{{ goods.name }}</div>
+<br>
+<table width="100%" border="0" align="center">
+    <tr>
+        <td width="40%" align="right">
+            <div><img src="{{ url_for('static', filename='goods_images/') }}{{ goods.image }}" width="360px"
+                      height="360px"/></div>
+            <br></td>
+        <td>
+            <div align="center" class="text4">Subscription Fee：<span class="title">HKD ${{ goods.price }} dollars</span></div>
+            <br>
+
+            <!-- Table to display items -->
+            <!-- table-hover as alternative -->
+            <table class="table table-bordered" style="text-align: center;">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Overview</th>
+                    <th scope="col">Specification</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td>Fund Issuer</td>
+                      <td>{{ goods.brand }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fund Series</td>
+                        <td>{{ goods.series }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fund Type</td>
+                        <td>{{ goods.fundtype }}</td>
+                    </tr>
+                    <tr>
+                        <td>Asset Class</td>
+                        <td>{{ goods.asset }}</td>
+                    </tr>
+                    <tr>
+                        <td>Maturity Date</td>
+                        <td>{{ goods.maturity }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fund Domicile</td>
+                        <td>{{ goods.domicile }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fund Manager</td>
+                        <td>{{ goods.manager }}</td>
+                    </tr>
+                    <tr>
+                        <td>Expected Redemption Amount</td>
+                        <td>{{ goods.redem_amount }}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <p style="color: crimson;">Redemption Amount operates as Fixed Zero-Coupon Instrument</p>
+            <br>
+            <button class="btn btn-secondary" style="font-weight: bold; font-size: 14px; border-radius: 15px;"><a href="/add?id={{ goods.id }}&name={{ goods.name }}&price={{ goods.price }}">Add to Cart</button>
+        </td>
+    </tr>
+</table>
+</body>
+{% endblock %}

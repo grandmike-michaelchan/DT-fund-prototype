@@ -1,0 +1,313 @@
+{% extends "base2.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- Custom CSS Style -->
+	<style>
+	#section1 {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
+  	#section2 {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
+	.background{
+		background-image: url("http://dtgroups.ddns.net/dthrms/wp-content/uploads/2020/03/sea-edge-79ab30e2.png");
+		background-color: aquamarine;
+		background-position: left center;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}	
+
+	.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+	}
+
+	.glow-on-hover:before {
+		content: '';
+		background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+		position: absolute;
+		top: -2px;
+		left:-2px;
+		background-size: 400%;
+		z-index: -1;
+		filter: blur(5px);
+		width: calc(100% + 4px);
+		height: calc(100% + 4px);
+		animation: glowing 20s linear infinite;
+		opacity: 0;
+		transition: opacity .3s ease-in-out;
+		border-radius: 10px;
+	}
+
+	.glow-on-hover:active {
+		color: #000
+	}
+
+	.glow-on-hover:active:after {
+		background: transparent;
+	}
+
+	.glow-on-hover:hover:before {
+		opacity: 1;
+	}
+
+	.glow-on-hover:after {
+		z-index: -1;
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: rgb(109, 0, 143);
+		left: 0;
+		top: 0;
+		border-radius: 10px;
+	}
+
+	@keyframes glowing {
+		0% { background-position: 0 0; }
+		50% { background-position: 400% 0; }
+		100% { background-position: 0 0; }
+	}
+	</style>
+	
+	{% include 'goods_header.html' %}
+
+	<!-- Header - set the background image for the header in the line below -->
+	<header class="py-5 bg-image-full" style="background-image: url('http://dtgroups.ddns.net/dthrms/wp-content/uploads/2019/06/Blue-BG.jpg');">
+		<img class="img-fluid d-block mx-auto" src="http://dtgroups.ddns.net/dthrms/wp-content/uploads/2019/06/facebook_profile_image-300x300.png" alt="">
+	</header>
+  </head>
+
+  <body class="background" data-spy="scroll" data-target=".navbar" data-offset="50">
+		<!-- Page Content -->
+		<!-- container provides content shift inner -->
+		<div class="container">
+			<!-- Portfolio Item Heading -->
+			<h1 class="bg-info my-8">Fund Inspiration 
+				<br>
+			<small>Think investment, think DT</small>
+				<br>
+				<br>
+			</h1>
+		
+			<!-- Portfolio Item Row -->
+			<div class="row">
+					<div class="col-md-auto">
+					<!-- TradingView Widget BEGIN -->
+					<!-- div class="tradingview-widget-container" -->
+						<div id="tradingview_57e42"></div>
+						<div class="tradingview-widget-copyright"><a href="http://dtgroups.ddns.net/dthrms" rel="noopener" target="_blank"><span class="blue-text">Price quoted</span></a> by DT third party source provider</div>
+					</div>
+					<!-- TradingView Widget END -->
+					
+					<!-- Clcok Component -->
+					<canvas id="canvas" width="400" height="400"
+					style="background-color:rgb(0, 96, 109)">
+					</canvas>
+					<!-- Clock Component Ends -->
+			</div>
+			
+			<!-- Content Section 1 -->
+			<div id="section1" class="container-fluid">
+
+				<h3 class="my-3">DT Investment Management </h3>
+				<p>Creativity bounds us together !</p>
+				<br>
+				<p>Sign up to subscribe our weekly Project.</p>
+				<p style="font-weight: 400; font-family: Georgia, 'Times New Roman', Times, serif;">The term “Fund” covers a number of terms including mutual funds, collective
+					investment undertakings, collective investment schemes or pooled investment
+					vehicles and these terms are generally used interchangeably.
+					A fund can be classified in various ways e.g. by its structure, its investment
+					strategy or its regulatory status.</p>
+					<br><br>
+					<button class="glow-on-hover" type="button" onclick="location.href='/login'"> Login </button>
+			</div>
+		</div>
+		<!-- /.row -->
+		<!-- Content Section 2 -->
+		<div id="section2" class="row container-fluid">  
+
+			<div class="col-lg-3 col-md-6 mb-4">
+				<div class="card h-100">
+				  <img class="card-img-top" src="http://dtgroups.ddns.net/dthrms/wp-content/uploads/2020/04/today-5-18-500x325.png" alt="">
+				  <div class="card-body">
+					<h4 class="card-title" style="color: black;">About DT</h4>
+					<p class="card-text" style="color: black;">Discover DT Group and grap a job !</p>
+				  </div>
+				  <div class="card-footer">
+					<a href="http://dtgroups.ddns.net/dthrms/about-us/" class="btn btn-primary">Find Out More!</a>
+				  </div>
+				</div>
+			  </div>
+		
+			  <div class="col-lg-3 col-md-6 mb-4">
+				<div class="card h-100">
+				  <img class="card-img-top" src="http://dtgroups.ddns.net/dthrms/wp-content/uploads/2020/04/quiet-breaks-with-god-500x325.jpg" alt="">
+				  <div class="card-body">
+					<h4 class="card-title" style="color: black;">Register Account</h4>
+					<p class="card-text" style="color: black;">Register DT Fund to start your fund career.</p>
+				  </div>
+				  <div class="card-footer">
+					<a href="/reg" class="btn btn-primary">Register</a>
+				  </div>
+				</div>
+			  </div>
+		
+			  <div class="col-lg-3 col-md-6 mb-4">
+				<div class="card h-100">
+				  <img class="card-img-top" src="http://dtgroups.ddns.net/dthrms/wp-content/uploads/2020/04/jesus-is-the-way-jesus-calling-500x325.png" alt="">
+				  <div class="card-body">
+					<h4 class="card-title" style="color: black;">Contact Us</h4>
+					<p class="card-text" style="color: black;">Keep in touch with us, sucessful career is just a few clicks away.</p>
+				  </div>
+				  <div class="card-footer">
+					<a href="http://dtgroups.ddns.net/dthrms/contact-us/" class="btn btn-primary">Find Out More!</a>
+				  </div>
+				</div>
+			  </div>
+
+			  <div class="col-lg-3 col-md-6 mb-4">
+				<div class="card h-100">
+				  <img class="card-img-top" src="http://dtgroups.ddns.net/dthrms/wp-content/uploads/2020/04/remembering-9-11.jpg" alt="">
+				  <div class="card-body">
+					<h4 class="card-title" style="color: black;">Browse Fund</h4>
+					<p class="card-text" style="color: black;">Investment involves risk, please do not enter unless you understand the terms</p>
+				  </div>
+				  <div class="card-footer">
+					<a href="/list" class="btn btn-primary">Find Out More!</a>
+				  </div>
+				</div>
+			  </div>
+		</div>
+	
+
+
+		<!-- JavaScript Section -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+		
+		<!-- Stock graph -->
+		<script type="text/javascript">
+		new TradingView.widget(
+			{
+			"width": 695,
+			"height": 455,
+			"symbol": "INDEX:HSI",
+			"interval": "D",
+			"timezone": "Etc/UTC",
+			"theme": "light",
+			"style": "1",
+			"locale": "en",
+			"toolbar_bg": "#f1f3f6",
+			"enable_publishing": false,
+			"allow_symbol_change": true,
+			"container_id": "tradingview_57e42"
+			}
+		);
+		</script>
+
+		<!-- Clock -->
+		<script>
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			var radius = canvas.height / 2;
+			ctx.translate(radius, radius);
+			radius = radius * 0.9
+			setInterval(drawClock, 1000);
+			
+			function drawClock() {
+			  drawFace(ctx, radius);
+			  drawNumbers(ctx, radius);
+			  drawTime(ctx, radius);
+			}
+			
+			function drawFace(ctx, radius) {
+			  var grad;
+			  ctx.beginPath();
+			  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+			  ctx.fillStyle = 'white';
+			  ctx.fill();
+			  grad = ctx.createRadialGradient(0,0,radius*0.9, 0,0,radius*1.05);
+			  grad.addColorStop(0, '#333');
+			  grad.addColorStop(0.5, 'white');
+			  grad.addColorStop(1, '#333');
+			  ctx.strokeStyle = grad;
+			  ctx.lineWidth = radius*0.1;
+			  ctx.stroke();
+			  ctx.beginPath();
+			  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+			  ctx.fillStyle = '#333';
+			  ctx.fill();
+			}
+			
+			function drawNumbers(ctx, radius) {
+			  var ang;
+			  var num;
+			  ctx.font = radius*0.15 + "px arial";
+			  ctx.textBaseline="middle";
+			  ctx.textAlign="center";
+			  for(num = 1; num < 13; num++){
+				ang = num * Math.PI / 6;
+				ctx.rotate(ang);
+				ctx.translate(0, -radius*0.85);
+				ctx.rotate(-ang);
+				ctx.fillText(num.toString(), 0, 0);
+				ctx.rotate(ang);
+				ctx.translate(0, radius*0.85);
+				ctx.rotate(-ang);
+			  }
+			}
+			
+			function drawTime(ctx, radius){
+				var now = new Date();
+				var hour = now.getHours();
+				var minute = now.getMinutes();
+				var second = now.getSeconds();
+				//hour
+				hour=hour%12;
+				hour=(hour*Math.PI/6)+
+				(minute*Math.PI/(6*60))+
+				(second*Math.PI/(360*60));
+				drawHand(ctx, hour, radius*0.5, radius*0.07);
+				//minute
+				minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+				drawHand(ctx, minute, radius*0.8, radius*0.07);
+				// second
+				second=(second*Math.PI/30);
+				drawHand(ctx, second, radius*0.9, radius*0.02);
+			}
+			
+			function drawHand(ctx, pos, length, width) {
+				ctx.beginPath();
+				ctx.lineWidth = width;
+				ctx.lineCap = "round";
+				ctx.moveTo(0,0);
+				ctx.rotate(pos);
+				ctx.lineTo(0, -length);
+				ctx.stroke();
+				ctx.rotate(-pos);
+			}
+			</script>
+	</body>
+</html>
+
+{% endblock %}

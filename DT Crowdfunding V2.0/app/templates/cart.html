@@ -1,0 +1,123 @@
+{% extends "base2.html" %}
+{% block title %}Fund Cart{% endblock %}
+{% block body %}
+<style type="text/css">
+       table {
+            border-collapse: collapse;
+        }
+
+        .threeboder {
+            border: 1px solid #5B96D0;
+        }
+
+        .trow {
+            border-right: 1px solid #5B96D0;
+            border-bottom: 1px solid #5A96D6;
+        }
+
+        .theader {
+            background-color: #A5D3FF;
+            font-size: 14px;
+            border-right: 1px solid #5B96D0;
+            border-bottom: 1px solid #5A96D6;
+        }
+
+        body
+        {
+            background-image: linear-gradient(to right, #ffa46f, #cfbaa7);
+            margin-top: 150px !important;
+        }
+</style>
+
+<!-- Item[0] = Fund ID --> 
+<!-- Item[1] = Fund name -->
+<!-- Item[2] = Fund Price -->
+<!-- Item[3] = Fund order quantity -->
+<!-- Item[4] = Fund Sub Total -->
+<!-- views.py (item[0], item[1], item[2], item[3], subtotal, total are passed to here jinja quotation and list -->
+
+<script>
+    //All content links with local
+        function calc(rowid, quantityInput) {
+
+            quantity = quantityInput.value //Get the value 
+            if (isNaN(quantity)) {
+                alert("Please enter valid quantity number");
+                // Set Quantity back to 0 after showing alert message 
+                quantityInput.value = 0;
+                // Get quantity by user input again 
+                quantity = quantityInput.value
+                // ????
+                quantityInput.focus();
+                // return;
+            }
+            // Fund price of the fund ID, concat price and fund id
+            var price_id = 'price_' + rowid;
+            // Get single fund price only excluding ID 
+            var price = parseFloat(document.getElementById(price_id).innerText);
+
+            // Fund subtotal of that fund ID
+            var subtotal_id = 'subtotal_' + rowid;
+            // Subtotal price before update
+            subtotal1 = parseFloat(document.getElementById(subtotal_id).innerText);
+            //Subtotal shortn to 2 decimal place 
+            subtotal1 = subtotal1.toFixed(2);
+            document.getElementById(subtotal_id).innerText = quantity * price;
+            // Subtotal price after update
+            subtotal2 = parseFloat(document.getElementById(subtotal_id).innerText);
+            // Get Total
+            total = parseFloat(document.getElementById('total').innerText);
+            // Calculate grandtotal 
+            total = total - subtotal1 + subtotal2;
+            // Total shorten to 2 decimal place
+            total = total.toFixed(2);
+            // Pass, update and display Grand Total
+            document.getElementById('total').innerText = total;
+        }
+</script>
+
+<body>
+<table width="100%" border="0" align="center">
+    <tr>
+        {% include 'goods_header.html' %}
+    </tr>
+</table>
+<hr width="100%"/>
+<div class="text3" align="center">Fund pending for payment</div>
+<br>
+<form action="/submit_order" method="post">
+    <table width="100%" border="0" align="center" class="threeboder">
+        <tr bgcolor="#A5D3FF">
+            <td height="50" align="center" class="theader">Fund Name</td>
+            <td width="8%" align="center" class="theader">Quantity</td>
+            <td width="15%" align="center" class="theader">Subscription Fee</td>
+            <td width="15%" align="center" class="theader">Subtotal</td>
+        </tr>
+        {% for item in list %}
+        <tr>
+            <!-- Fund Name Display -->
+            <td height="50" align="left" class="trow">{{ item[1] }}</td>
+            <td align="center" class="trow">
+                <!-- Update Quantity column, Get Fund ID item[0] + Get quantity value input item[3] -->
+                <input name="quantity_{{ item[0] }}" type="text" value="{{ item[3] }}"
+                       onblur="calc({{ item[0] }}, this)"/>
+            </td>
+            <!-- Display single fund price -->
+            <td align="center" class="trow">HKD &dollar;<span id="price_{{ item[0] }}">{{ item[2] }}</span></td>
+            <!-- Display Subtotal amount -->
+            <td align="center" class="trow">HKD &dollar;<span id="subtotal_{{ item[0] }}">{{ item[4] }}</span>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <!-- Display Grand Total -->
+            <td height="50" colspan="5" align="right">Grand Total: HKD &dollar;<span id="total">{{ total }}</span>&nbsp;&nbsp;</td>
+        </tr>
+    </table>
+    <br>
+    <div align="center">
+        <input type="image" src="{{ url_for('static', filename='images/submit_order.jpg') }}" />&nbsp;&nbsp;
+    </div>
+</form>
+</body>
+{% endblock %}

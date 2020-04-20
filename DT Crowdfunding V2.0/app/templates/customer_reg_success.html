@@ -1,0 +1,41 @@
+{% extends "base1.html" %}
+{% block title %}Registration Success{% endblock %}
+{% block body %}
+<style type="text/css">
+a:link {
+    font-size: 18px;
+    color: #DB8400;
+    text-decoration: none;
+    font-weight: bolder;
+}
+a:visited {
+    font-size: 18px;
+    color: #DB8400;
+    text-decoration: none;
+    font-weight: bolder;
+}
+a:hover {
+    font-size: 18px;
+    color: #DB8400;
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+body
+{
+    background-image: linear-gradient(to right, #40c9ff, #3d8aad);
+    margin-top: 150px !important;
+}
+</style>
+
+<!-- Redirect to home page after sucessful registration and shown this confirmation page -->
+
+<body>
+<div align="center">
+  <p class="text7">You have completed registration！</p>
+  <p>
+       <a href="/home">Back to Main Page </a>
+  </p>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- Providing web template for login and registration page -->
+<!-- Block template starts with {percentage percentage} -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Block template show the page title -->
+        <title>
+            Login Template - {% block title %}{% endblock %}
+        </title>
+        <!-- url_for static is to handle external file -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/book.css') }}">
+    </head>
+
+    <!-- Header Info -->
+    <div id="header">
+        <img src="{{ url_for('static', filename='images/tree.jpg') }}" style="width:100px;height:100px;">
+        {% block header %}{% endblock %}
+        <hr/>
+    </div>
+
+    <!-- Main Content Info -->
+    <div id="content">
+        {% block body %}
+        {% endblock %}
+    </div>
+
+     <!-- Footer content -->
+     <div id="footer">
+        <hr/>
+        Copyright @ Michael Chan 2020. All rights Reserved
+    </div>
+
+</html>

@@ -1,0 +1,76 @@
+{% extends "base2.html" %}
+{% block title %}My Account{% endblock %}
+{% block body %}
+<style type="text/css">
+       table {
+            border-collapse: collapse;
+        }
+
+        .threeboder {
+            border: 1px solid #5B96D0;
+        }
+
+        .trow {
+            border-right: 1px solid #5B96D0;
+            border-bottom: 1px solid #5A96D6;
+        }
+
+        .theader {
+            background-color: #A5D3FF;
+            font-size: 14px;
+            border-right: 1px solid #5B96D0;
+            border-bottom: 1px solid #5A96D6;
+        }
+</style>
+
+<!-- Item[0] = Fund ID --> 
+<!-- Item[1] = Fund name -->
+<!-- Item[2] = Fund Price -->
+<!-- Item[3] = Fund order quantity -->
+<!-- Item[4] = Fund Sub Total -->
+<!-- views.py (item[0], item[1], item[2], item[3], subtotal, total are passed to here jinja quotation and list -->
+
+
+<table width="100%" border="0" align="center">
+    <tr>
+        {% include 'goods_header.html' %}
+    </tr>
+</table>
+<hr width="100%"/>
+<div class="text3" align="border-right" style="margin-left: 10px;">My Account Details</div>
+<br>
+<form action="/submit_order" method="post">
+    <!-- Profile Module -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card hovercard">
+                    <div class="cardheader">
+                    </div>
+                    <div class="avatar">
+                        <img alt="" src="http://dtgroups.ddns.net/dthrms/wp-content/plugins/clicface-trombi/img/default_picture.png">
+                    </div>
+                    <div class="info">
+                        <div class="title">
+                            <a target="_blank" href="https://dtgroups.ddns.net/">{{ list[1] }}</a>
+                        </div>
+                        <div class="desc">ID: {{ list[0] }} </div>
+                        <div class="desc">Email: {{ list[2] }}</div>
+                        <div class="desc">Contact: {{ list[3] }}</div>
+                        <div class="desc">Date of birth: {{ list[4] }}</div>
+                    </div>
+                    <div class="bottom">
+                        <i class="fa fa-camera-retro" href="https://www.instagram.com/{{ list[0] }}/"></i> instagram
+                        <a class="btn btn-default" href="https://www.instagram.com/{{ list[0] }}/">
+                            <i class="fa fa-align-center" title="Align Center"></i>
+                          </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Profile Module -->
+    <br>
+</form>
+{% endblock %}
